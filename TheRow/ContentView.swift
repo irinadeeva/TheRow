@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
   private let number = 10
   @State private var size: CGSize = CGSize.zero
@@ -25,14 +24,12 @@ struct ContentView: View {
             isDiagonal.toggle()
             size = CGSize.zero
           }
-      }
+        }
         .frame(width: geometry.size.width, height: geometry.size.height)
     }
   }
 
-
-  func customLayout(in size: CGSize, isDiagonal:
-                      Bool) -> some View {
+  func customLayout(in size: CGSize, isDiagonal: Bool) -> some View {
     let squareSize = size.height/CGFloat(number)
     let padding = squareSize == 0 ? 2 : squareSize / 4
 
@@ -42,7 +39,9 @@ struct ContentView: View {
           .fill(.blue)
           .aspectRatio(1.0, contentMode: .fit)
           .cornerRadius(isDiagonal ? 16 : 8)
-          .alignmentGuide(.rectangleAlignment) { _ in CGFloat(CGFloat(index) * CGFloat(squareSize)) }
+          .alignmentGuide(.rectangleAlignment) { _ in
+            CGFloat(CGFloat(index) * CGFloat(squareSize))
+          }
           .padding(isDiagonal ? -padding : padding)
       }
     }
